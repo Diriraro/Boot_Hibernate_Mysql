@@ -41,11 +41,27 @@
 		<label for="email">email:</label> <form:input type="email" class="form-control" id="email" path="email"/>
 		<form:errors path="email"></form:errors>
 	</div>
+	
+	<input type="button" class="btn btn-info" id="add" value="FileAdd">
+	<div class="form-group" id="f">
 		
+	</div>		
 		
 	<button type="submit" class="btn btn-default">Join</button>
 </form:form>
 	
 </div>
+
+<script type="text/javascript">
+		var board = '${path}';
+		if(board=='Write'){
+			$("#num").remove();
+		}
+
+		$("#add").click(function(){
+			$("#f").append('<input type="file" name="files">');
+		});
+	</script>
+
 </body>
 </html>

@@ -2,7 +2,7 @@ package com.iu.s1.member;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MemberRepository extends JpaRepository<MemberVO, String> {
+public interface MemberFileRepository extends JpaRepository<MemberFileVO, Long> {
 	//내장 메서드
 	//save() : insert
 	//쿼리문 대신 메서드가 제공
@@ -21,7 +21,5 @@ public interface MemberRepository extends JpaRepository<MemberVO, String> {
 	//사용자가 생성하는 메서드 쿼리 메서드
 	//https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.entity-persistence
 	
-	//public abstract ...
-	//select * from member where id=? and pw=?
-	public MemberVO findByIdAndPw(String id, String pw);
+	
 }
