@@ -100,19 +100,18 @@ class MemberRepositoryTest {
 		
 	}
 
-//	@Test
+	@Test
 	void updateTest() {
 		MemberVO memberVO = new MemberVO();
-		memberVO.setId("iua");
-		memberVO.setPw("iua");
-		memberVO.setEmail("iu@iu.iuasdasd");
+		memberVO.setId("iu3");
+		memberVO.setEmail("iu@sdadasd");
 		
-		MemberFileVO memberFileVO = new MemberFileVO();
-		memberFileVO.setFileName("change2 File Name");
-		memberFileVO.setOriName("change2 Ori Name");
-		memberFileVO.setFileNum(2);
-		memberVO.setMemberFileVO(memberFileVO);
-		memberFileVO.setMemberVO(memberVO);
+//		MemberFileVO memberFileVO = new MemberFileVO();
+//		memberFileVO.setFileName("change2 File Name");
+//		memberFileVO.setOriName("change2 Ori Name");
+//		memberFileVO.setFileNum(2);
+//		memberVO.setMemberFileVO(memberFileVO);
+//		memberFileVO.setMemberVO(memberVO);
 		
 		memberVO=memberRepository.save(memberVO);
 		
