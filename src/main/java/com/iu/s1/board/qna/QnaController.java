@@ -1,5 +1,7 @@
 package com.iu.s1.board.qna;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,7 +10,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s1.board.BoardVO;
@@ -28,8 +32,14 @@ public class QnaController {
 	@GetMapping("qnaList")
 	public ModelAndView boardList(
 	@PageableDefault(size = 10, page = 0, direction = Direction.DESC, sort = {"num"})Pageable pageable,
-	String kind, String search)throws Exception{
+	HttpServletRequest request)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String kind="";
+		String search="";
+		if(request.getParameter("kind")!=null || request.getParameter("search")!=null) {
+			kind=request.getParameter("kind");
+			search = request.getParameter("search");
+		}
 		Page<QnaVO> page = qnaService.boardList(pageable,kind,search);
 		
 		System.out.println(page.getContent().size());
@@ -57,10 +67,17 @@ public class QnaController {
 	public ModelAndView boardWrite()throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("boardVO", new QnaVO());
+		mv.addObject("path", "Write");
 		mv.setViewName("board/boardWrite");
 		return mv;
 	}
 	
-	
-
+	@PostMapping("qnaWrite")
+	public ModelAndView boardWrite(QnaVO qnaVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		qnaVO = qnaService.boardWrite(qnaVO);
+		mv.setViewName("redirect:./qnaList");
+		
+		return mv;
+	}
 }
