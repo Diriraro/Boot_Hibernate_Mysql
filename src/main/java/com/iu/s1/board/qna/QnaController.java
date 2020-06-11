@@ -27,9 +27,10 @@ public class QnaController {
 	
 	@GetMapping("qnaList")
 	public ModelAndView boardList(
-	@PageableDefault(size = 10, page = 0, direction = Direction.DESC, sort = {"num"})Pageable pageable)throws Exception{
+	@PageableDefault(size = 10, page = 0, direction = Direction.DESC, sort = {"num"})Pageable pageable,
+	String kind, String search)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		Page<QnaVO> page = qnaService.boardList(pageable);
+		Page<QnaVO> page = qnaService.boardList(pageable,kind,search);
 		
 		System.out.println(page.getContent().size());
 		System.out.println(page.getSize());

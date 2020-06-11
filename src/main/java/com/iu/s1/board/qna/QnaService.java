@@ -10,7 +10,15 @@ public class QnaService {
 	@Autowired
 	private QnaRepository qnaRepository;
 	
-	public Page<QnaVO> boardList(Pageable pageable)throws Exception{
+	public Page<QnaVO> boardList(Pageable pageable,String kind, String search)throws Exception{
+		if(kind.equals("title")) {
+			
+		}else if (kind.equals("writer")) {
+			
+		}else {
+			
+		}
+		
 		return qnaRepository.findAll(pageable);
 	}
 	
