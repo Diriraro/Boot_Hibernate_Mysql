@@ -42,7 +42,7 @@
 				<td>Hit</td>
 			</tr>
 
-			<c:forEach items="${list}" var="vo">
+			<c:forEach items="${page.content}" var="vo">
 				<tr>
 					<td>${vo.num}</td>
 					<td>
@@ -61,19 +61,43 @@
 		</table>
 
 		<div>
-			<ul class="pagination">
-				<c:if test="${pager.curBlock gt 1}">
-					<li><a href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">이전</a></li>
+			<p>
+			<c:if test="${not page.isFirst()}">
+				<span>
+					<a href="./${board}List?page=0"> &lt;&lt; </a>
+				</span>
+				
+				<span>
+					<a href="./${board}List?page=${page.number-1}"> &lt; </a>
+				</span>
+			</c:if>
+			
+			<c:forEach begin="${page.number}" end="${page.number+4}" var="i">
+				<c:if test="${page.totalPages gt i}">
+					<a href="./${board}List?page=${i}">${i+1}</a>
 				</c:if>
-
-				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li><a href="./${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
-				</c:forEach>
-
-				<c:if test="${pager.curBlock lt pager.totalBlock}">
-					<li><a href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">다음</a></li>
-				</c:if>
-			</ul>
+			</c:forEach>
+			
+			<c:if test="${not page.isLast()}">
+				<span>
+					<a href="./${board}List?page=${page.number+1}"> &gt; </a>
+				</span>
+				
+				<span>
+				<a href="./${board}List?page=${page.totalPages-1}"> &gt;&gt; </a></span>
+			</c:if>
+			</p>
+			
+			<c:if test="${not page.isFirst()}">
+			<a href="./${board}List?page=${page.number-1}">[이전]</a>
+			</c:if>
+			
+			<span>${page.number+1}</span>
+			
+			<c:if test="${not page.isLast()}">
+			<a href="./${board}List?page=${page.number+1}">[다음]</a>
+			</c:if>
+		
 		</div>
 
 		<a href="./${board}Write" class="btn btn-danger">Write</a>
