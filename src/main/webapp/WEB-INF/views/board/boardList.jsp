@@ -14,7 +14,7 @@
 		<h2>${board}List</h2>
 
 		<form class="form-inline" action="./${board}List" id ="frm">
-			<input type="hidden" name="page" id="p">
+			<input type="hidden" name="curPage" id="p">
 			<div class="input-group input-group-sm col-xs-2">
 				<select class="form-control" id="sel1" name="kind">
 					<option id="title" value="title">title</option>
@@ -61,6 +61,7 @@
 			</c:forEach>
 		</table>
 
+
 		<div>
 			<p>
 			<c:if test="${not page.isFirst()}">
@@ -89,8 +90,6 @@
 				</span>
 			</c:if>
 			</p>
-			
-		
 		</div>
 
 		<a href="./${board}Write" class="btn btn-danger">Write</a>
@@ -101,7 +100,7 @@
 	<script type="text/javascript">
 		$(".customPager").click(function(){
 			var page=$(this).attr("title");
-			$("#p").val(page);
+			$("#p").val(1*page+1);
 			$("#frm").submit();
 		});
 
