@@ -20,24 +20,29 @@ public class NoticeService {
 	@Autowired
 	private NoticeRepository noticeRepository;
 	
+	
+	
 	//Pageable pageable,String search
 	public List<NoticeVO> noticeList(Pager pager) throws Exception{ 
+	
+		Pageable pageable = PageRequest.of((int)pager.getStartRow(), pager.getSize(), Sort.Direction.DESC, "num");
+		
 		if(pager.getKind().equals("writer")) {
 			pager.makeRow();
 			pager.makePage(noticeRepository.countByWriterContaining(pager.getSearch()));
-			Pageable pageable = PageRequest.of((int)pager.getStartRow(), pager.getPerPage(), Sort.Direction.DESC, "num");
+			
 			return noticeRepository.findByWriterContaining(pager.getSearch(), pageable);
 
 		}else if(pager.getKind().equals("contents")){
 			pager.makeRow();
 			pager.makePage(noticeRepository.countByContentsContaining(pager.getSearch()));
-			Pageable pageable = PageRequest.of((int)pager.getStartRow(), pager.getPerPage(), Sort.Direction.DESC, "num");
+			
 			return noticeRepository.findByContentsContaining(pager.getSearch(), pageable);
 
 		}else {
 			pager.makeRow();
 			pager.makePage(noticeRepository.countByTitleContaining(pager.getSearch()));
-			Pageable pageable = PageRequest.of((int)pager.getStartRow(), pager.getPerPage(), Sort.Direction.DESC, "num");
+			
 			return noticeRepository.findByTitleContaining(pager.getSearch(), pageable);
 
 		}

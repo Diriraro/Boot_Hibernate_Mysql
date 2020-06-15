@@ -13,21 +13,21 @@ class QnaRepositoryTest {
 	@Autowired
 	private QnaService qnaService;
 	
-	@Test
-	public void insertTest()throws Exception {
-		
-		for(int i=0; i<100; i++) {
-			
-		QnaVO qnaVO = new QnaVO();
-		qnaVO.setTitle("title"+i);
-		qnaVO.setContents("contents"+i);
-		qnaVO.setWriter("writer"+i);
-		
-		qnaVO = qnaService.boardWrite(qnaVO);
-		}
-//		assertNotNull(qnaVO);
-		
-	}
+//	@Test
+//	public void insertTest()throws Exception {
+//		
+//		for(int i=0; i<100; i++) {
+//			
+//		QnaVO qnaVO = new QnaVO();
+//		qnaVO.setTitle("title"+i);
+//		qnaVO.setContents("contents"+i);
+//		qnaVO.setWriter("writer"+i);
+//		
+//		qnaVO = qnaService.boardWrite(qnaVO);
+//		}
+////		assertNotNull(qnaVO);
+//		
+//	}
 
 
 
