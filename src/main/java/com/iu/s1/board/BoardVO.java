@@ -35,6 +35,6 @@ public class BoardVO {
 //	@UpdateTimestamp
 	private Date regDate;
 	@Column
-	private Long hit;
+	private long hit;
 	
 }

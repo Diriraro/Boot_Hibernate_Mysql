@@ -50,7 +50,7 @@ public class QnaController {
 		
 		if(qnaVO != null) {
 			mv.setViewName("board/boardSelect");
-			mv.addObject("vo", qnaVO);
+			mv.addObject("boardVO", qnaVO);
 		}
 		
 		
@@ -93,6 +93,7 @@ public class QnaController {
 	@PostMapping("qnaWrite")
 	public ModelAndView boardWrite(QnaVO qnaVO, MultipartFile [] files)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		qnaVO.setHit(0L);
 		qnaVO = qnaService.boardWrite(qnaVO, files);
 		mv.setViewName("redirect:./qnaList");
 		
@@ -133,6 +134,7 @@ public class QnaController {
 	@PostMapping("qnaReply")
 	public ModelAndView boardReply(QnaVO qnaVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		qnaVO.setHit(0L);
 		qnaVO = qnaService.boardReply(qnaVO);
 		mv.setViewName("redirect:./qnaList");
 		

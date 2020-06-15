@@ -60,7 +60,7 @@ public class NoticeController {
 			System.out.println(noticeFileVO.getOriName());
 		}
 		
-		mv.addObject("vo", noticeVO);
+		mv.addObject("boardVO", noticeVO);
 		mv.setViewName("board/boardSelect");
 		
 		return mv;

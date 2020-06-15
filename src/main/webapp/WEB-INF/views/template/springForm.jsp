@@ -4,7 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <form:form modelAttribute="boardVO" action="${board}${path}" method="post" enctype="multipart/form-data">
-	<form:input path="num" type="text" name="num" id="num" />
+	<form:input path="num" type="hidden" name="num" id="num" />
+	
 	<div class="form-group">
 		<label for="title">Title:</label> 
 		<form:input path="title" type="text" class="form-control" id="title"  />
