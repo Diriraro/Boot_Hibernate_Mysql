@@ -14,13 +14,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
 public class BoardVO {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long num;
@@ -32,9 +31,16 @@ public class BoardVO {
 	private String contents;
 	@Column
 	@CreationTimestamp
-//	@UpdateTimestamp
+	//@UpdateTimestamp
 	private Date regDate;
-	@Column
-	private long hit;
+
+	private Long hit;
 	
+	public Long getHit() {
+		if(this.hit==null) {
+			this.hit=0L;
+		}
+		return this.hit;
+	}
+
 }

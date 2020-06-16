@@ -2,18 +2,27 @@ package com.iu.s1.board.notice;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.iu.s1.board.qna.QnaVO;
+
 public interface NoticeRepository extends JpaRepository<NoticeVO, Long> {
+	//select
+	//findBy컬러명 조건 ....
 	
-	public int countByTitleContaining(String search);
-	public int countByContentsContaining(String search);
-	public int countByWriterContaining(String search);
 	
-	public List<NoticeVO> findByContentsContaining(String search, Pageable pageable);
-	public List<NoticeVO> findByWriterContaining(String search, Pageable pageable);
-	public List<NoticeVO> findByTitleContaining(String search, Pageable pageable);
+	//title 검색
+	Page<NoticeVO> findByTitleContaining(String search, Pageable pageable);
+		
+		//contents 검색
+	Page<NoticeVO> findByContentsContaining(String search, Pageable pageable);
+		
+		//writer 검색
+	Page<NoticeVO> findByWriterContaining(String search, Pageable pageable);
+	
+	
 	
 	//select * from notice where num>0 order by num desc
 	public List<NoticeVO> findByNumGreaterThanOrderByNumDesc(long num);
@@ -21,6 +30,6 @@ public interface NoticeRepository extends JpaRepository<NoticeVO, Long> {
 	//select * from notice where num between 6 and 10
 	public List<NoticeVO> findByNumBetween(long n1, long n2);
 	
-	//select * from notice where title like ?? order by num desc
+	//select * from notice where title like '%1%' order by num desc
 	public List<NoticeVO> findByTitleContainingOrderByNumDesc(String search);
 }

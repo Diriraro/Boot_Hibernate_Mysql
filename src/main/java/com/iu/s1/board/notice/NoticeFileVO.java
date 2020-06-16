@@ -15,10 +15,10 @@ import lombok.Data;
 @Entity
 @Table(name = "noticeFile")
 public class NoticeFileVO {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long fileNum;
+	
 	@Column
 	private String fileName;
 	@Column
@@ -27,4 +27,5 @@ public class NoticeFileVO {
 	@ManyToOne
 	@JoinColumn(name = "num")
 	private NoticeVO noticeVO;
+
 }

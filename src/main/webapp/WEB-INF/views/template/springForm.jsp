@@ -12,7 +12,7 @@
 	</div>
 	<div class="form-group">
 		<label for="writer">Writer:</label> 
-		<form:input type="text" path="writer" class="form-control" id="writer" value="${member.id}" readonly="true"/>
+		<form:input type="text" path="writer" class="form-control" id="writer" value="${member.id}" />
 		<form:errors path="writer"></form:errors>
 	</div>
 	<div class="form-group">

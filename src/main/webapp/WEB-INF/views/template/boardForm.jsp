@@ -9,7 +9,7 @@
 	</div>
 	<div class="form-group">
 		<label for="writer">Writer:</label> <input type="text"
-			class="form-control" id="writer" name="writer" value="${member.id}" readonly="readonly">
+			class="form-control" id="writer" name="writer" value="${member.id}">
 	</div>
 	<div class="form-group">
 		<label for="contents">Contents:</label>
